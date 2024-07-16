@@ -1,0 +1,21 @@
+package com.alfacentauri.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.alfacentauri.entities.Product;
+import com.alfacentauri.repositories.ProductRepository;
+
+@RestController
+@RequestMapping("/products")
+public class ProductController {
+	
+	@Autowired
+	ProductRepository repository;
+	
+	public Iterable<Product> getProducts() {
+		Iterable<Product> findAll = repository.findAll();
+	}
+	
+}

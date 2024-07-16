@@ -1,0 +1,20 @@
+package com.alfacentauri.springboot;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class InjectCollectionsApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(InjectCollectionsApplication.class, args);
+	}
+	
+	public List<String> courseList() {
+		return Arrays.asList();
+	}
+
+}

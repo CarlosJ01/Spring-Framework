@@ -1,0 +1,5 @@
+package com.alfacentauri.springboot.springboot.dao;
+
+public class Dao {
+
+}

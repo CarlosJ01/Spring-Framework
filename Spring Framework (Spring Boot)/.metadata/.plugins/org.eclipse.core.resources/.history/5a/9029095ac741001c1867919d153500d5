@@ -1,0 +1,11 @@
+package com.alfacentauri.repositories;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.alfacentauri.entities.Product;
+
+public interface ProductRepository extends CrudRepository<Product, Long> {
+	
+	void findByList<Product> findByName(String name);();
+	
+}

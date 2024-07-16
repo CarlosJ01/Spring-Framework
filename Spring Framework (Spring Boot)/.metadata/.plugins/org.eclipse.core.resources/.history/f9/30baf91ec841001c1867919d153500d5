@@ -1,0 +1,67 @@
+package com.alfacentauri;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
+
+import com.alfacentauri.entities.Product;
+import com.alfacentauri.repositories.ProductRepository;
+
+@SpringBootTest
+class SpringDataJpaApplicationTests {
+
+	@Autowired
+	ApplicationContext context;
+	
+	@Test
+	void saveProduct() {
+		ProductRepository repository = context.getBean(ProductRepository.class);
+		
+		Product product = new Product();
+		product.setId(1L);
+		product.setName("Mac");
+		product.setDescription("Awsome");
+		product.setPrice(1200D);
+		
+		repository.save(product);
+	}
+	
+	@Test
+	public void readOne() {
+		ProductRepository repository = context.getBean(ProductRepository.class);
+		Optional<Product> product = repository.findById(1L);
+		System.out.println(product);
+	}
+	
+	@Test
+	public void update() {
+		ProductRepository repository = context.getBean(ProductRepository.class);
+		
+		Optional<Product> productOptional = repository.findById(1L);
+		Product product = productOptional.get();
+		
+		product.setPrice(1500d);
+		repository.save(product);
+	}
+	
+	@Test
+	public void readAll() {
+		ProductRepository repository = context.getBean(ProductRepository.class);
+		
+		repository.findAll().forEach(product -> {
+			System.out.println(product);
+		});
+	}
+	
+	@Test
+	public void customFind() {
+		ProductRepository repository = context.getBean(ProductRepository.class);
+		List<Product> products = repository.findByName("Mac");
+		System.err.println(products);
+	}
+	
+}

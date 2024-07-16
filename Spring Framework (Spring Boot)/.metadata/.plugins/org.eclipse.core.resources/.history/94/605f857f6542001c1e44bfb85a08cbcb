@@ -1,0 +1,18 @@
+package com.alfacentauri.springboot;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class InjectCollectionsApplicationTests {
+
+	List<String> list;	
+	
+	@Test
+	void testListInjections() {
+		
+	}
+
+}
